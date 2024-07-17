@@ -1,10 +1,10 @@
-import "./App.css";
+import "./index.css";
 
 function App() {
   return (
     <main className="container">
       <header>
-        <h1 className="logo">Harmonia</h1>
+        <h1 className="logo text-3xl font-bold underline bg-red-600">Harmonia</h1>
       </header>
 
       <nav className="navbar">

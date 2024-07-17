@@ -1,12 +1,60 @@
-create table user (
-  id int unsigned primary key auto_increment not null,
-  email varchar(255) not null unique,
-  password varchar(255) not null
+CREATE TABLE user (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    firstname VARCHAR(255) NOT NULL,
+    lastname VARCHAR(255) NOT NULL,
+    avatar_image VARCHAR(255) NOT NULL,
+    pseudo VARCHAR(255) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    hashed_password VARCHAR(255) NOT NULL,
+    role ENUM('user', 'admin', 'editor') NOT NULL DEFAULT 'user'
 );
 
-create table item (
-  id int unsigned primary key auto_increment not null,
-  title varchar(255) not null,
-  user_id int unsigned not null,
-  foreign key(user_id) references user(id)
+CREATE TABLE article (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    title VARCHAR(255) NOT NULL,
+    image VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL,
+    user_id INT UNSIGNED NOT NULL,
+    CONSTRAINT fk_article_user FOREIGN KEY (user_id) REFERENCES user(id)
+);
+
+CREATE TABLE article_like (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    user_id INT UNSIGNED NOT NULL,
+    article_id INT UNSIGNED NOT NULL,
+    CONSTRAINT fk_user_like_article FOREIGN KEY (user_id) REFERENCES user(id),
+    CONSTRAINT fk_like_article FOREIGN KEY (article_id) REFERENCES article(id)
+);
+
+CREATE TABLE dream (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    title VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL,
+    user_id INT UNSIGNED NOT NULL,
+    CONSTRAINT fk_dream_user FOREIGN KEY (user_id) REFERENCES user(id)
+);
+
+CREATE TABLE dream_like (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    user_id INT UNSIGNED NOT NULL,
+    dream_id INT UNSIGNED NOT NULL,
+    CONSTRAINT fk_user_like_dream FOREIGN KEY (user_id) REFERENCES user(id),
+    CONSTRAINT fk_like_dream FOREIGN KEY (dream_id) REFERENCES dream(id)
+);
+
+CREATE TABLE comment (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    content TEXT NOT NULL,
+    user_id INT UNSIGNED NOT NULL,
+    article_id INT UNSIGNED DEFAULT NULL,
+    dream_id INT UNSIGNED DEFAULT NULL,
+    CONSTRAINT fk_comment_user FOREIGN KEY (user_id) REFERENCES user(id),
+    CONSTRAINT fk_comment_article FOREIGN KEY (article_id) REFERENCES article(id),
+    CONSTRAINT fk_comment_dream FOREIGN KEY (dream_id) REFERENCES dream(id)
 );

@@ -2,27 +2,137 @@ const AbstractSeeder = require("./AbstractSeeder");
 
 class UserSeeder extends AbstractSeeder {
   constructor() {
-    // Call the constructor of the parent class (AbstractSeeder) with appropriate options
     super({ table: "user", truncate: true });
   }
 
-  // The run method - Populate the 'user' table with fake data
-
   run() {
-    // Generate and insert fake data into the 'user' table
-    for (let i = 0; i < 10; i += 1) {
-      // Generate fake user data
-      const fakeUser = {
-        email: this.faker.internet.email(), // Generate a fake email using faker library
-        password: this.faker.internet.password(), // Generate a fake password using faker library
-        refName: `user_${i}`, // Create a reference name for the user
-      };
+    const firstnames = [
+      "John",
+      "Jane",
+      "Alice",
+      "Robert",
+      "Emily",
+      "Michael",
+      "Sarah",
+      "David",
+      "Laura",
+      "Daniel",
+      "Emma",
+      "James",
+      "Olivia",
+      "Matthew",
+      "Sophia",
+      "Lucas",
+      "Isabella",
+      "Ethan",
+      "Mia",
+      "Alexander",
+      "Ava",
+      "Henry",
+      "Charlotte",
+      "Liam",
+      "Amelia",
+      "Benjamin",
+      "Evelyn",
+      "William",
+      "Harper",
+      "Jackson",
+    ];
+    const lastnames = [
+      "Doe",
+      "Smith",
+      "Johnson",
+      "Brown",
+      "Davis",
+      "Wilson",
+      "Moore",
+      "Taylor",
+      "Anderson",
+      "Thomas",
+      "Jackson",
+      "White",
+      "Harris",
+      "Martin",
+      "Thompson",
+      "Garcia",
+      "Martinez",
+      "Robinson",
+      "Clark",
+      "Rodriguez",
+      "Lewis",
+      "Lee",
+      "Walker",
+      "Hall",
+      "Allen",
+      "Young",
+      "King",
+      "Wright",
+      "Scott",
+      "Green",
+    ];
+    const avatars = Array.from({ length: 23 }, (_, i) => `avatar-${i + 1}.svg`);
+    const editorPseudos = [
+      "DreamWriter",
+      "LucidDreamer",
+      "NightmareExpert",
+      "SleepScientist",
+      "DreamResearcher",
+    ];
+    const userPseudos = [
+      "DreamChaser",
+      "NightOwl",
+      "SleepyHead",
+      "DreamWalker",
+      "REMExplorer",
+      "DreamSeeker",
+      "NightVision",
+      "LucidMaster",
+      "SleepGuru",
+      "DreamCatcher",
+      "DreamAdventurer",
+      "MoonlightDreamer",
+      "StarlightSleeper",
+      "DreamNavigator",
+      "MysticDreamer",
+      "EchoDreamer",
+      "ShadowDreamer",
+      "DreamPilot",
+      "VisionaryDreamer",
+      "DreamVoyager",
+      "CelestialDreamer",
+      "DreamChronicles",
+      "DreamQuest",
+      "DreamWanderer",
+      "DreamWeaver",
+    ];
 
-      // Insert the fakeUser data into the 'user' table
-      this.insert(fakeUser); // insert into user(email, password) values (?, ?)
+    const users = [];
+
+    for (let i = 0; i < 30; i += 1) {
+      const role = i < 5 ? "editor" : "user";
+      const pseudo = i < 5 ? editorPseudos[i] : userPseudos[i - 5];
+      const firstname = firstnames[i];
+      const lastname = lastnames[i];
+      /* eslint-disable camelcase */
+      const avatar_image = avatars[i % avatars.length];
+      const email = `${firstname.toLowerCase()}.${lastname.toLowerCase()}@example.com`;
+      const hashed_password = `hashedpassword${i + 1}`;
+
+      users.push({
+        firstname,
+        lastname,
+        avatar_image,
+        pseudo,
+        email,
+        hashed_password,
+        role,
+      });
     }
+
+    users.forEach((user) => {
+      this.insert(user);
+    });
   }
 }
 
-// Export the UserSeeder class
 module.exports = UserSeeder;

@@ -1,5 +1,10 @@
 // Import the repository modules responsible for handling data operations on the tables
-const ItemRepository = require("./models/ItemRepository");
+const UserRepository = require("./models/UserRepository");
+const ArticleRepository = require("./models/ArticleRepository");
+const ArticleLikeRepository = require("./models/ArticleLikeRepository");
+const DreamRepository = require("./models/DreamRepository");
+const DreamLikeRepository = require("./models/DreamLikeRepository");
+const CommentRepository = require("./models/CommentRepository");
 
 // Create an empty object to hold data repositories for different tables
 const tables = {};
@@ -9,7 +14,12 @@ const tables = {};
 /* ************************************************************************* */
 
 // Register each repository as data access point for its table
-tables.item = new ItemRepository();
+tables.user = new UserRepository();
+tables.article = new ArticleRepository();
+tables.articleLike = new ArticleLikeRepository();
+tables.dream = new DreamRepository();
+tables.dreamLike = new DreamLikeRepository();
+tables.comment = new CommentRepository();
 
 /* ************************************************************************* */
 
