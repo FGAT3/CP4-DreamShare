@@ -1,0 +1,32 @@
+@import "../../scss/index.scss";
+
+.home-title {
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.home-title + .navigation-chevron {
+  margin-top: auto;
+}
+
+.home-title::before {
+  content: "";
+  background-image: url($homeBg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 88vh;
+  z-index: -1;
+
+  @include for-desktop-up {
+    height: 100vh;
+  }
+}

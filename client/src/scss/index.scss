@@ -1,0 +1,54 @@
+@import "./fonts";
+@import "./variables";
+@import "./mixins";
+@import "./image-paths.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-content;
+  background-color: $black-color;
+  color: $white-color;
+  padding-bottom: $nav-mobile-height;
+
+  @include for-desktop-up {
+    padding-top: $header-height;
+    padding-bottom: 0;
+  }
+}
+
+main {
+  min-height: calc(100vh - 8rem);
+  @include for-desktop-up {
+    min-height: calc(100vh - 8.8rem);
+  }
+}
+
+h1 {
+  @include clamp-title;
+  font-family: $font-title;
+  text-align: center;
+  color: $white-color;
+  font-weight: 500;
+  margin: 1rem;
+  text-shadow: $font-stroke;
+
+  @include for-desktop-up {
+    margin: 2rem;
+  }
+}
+
+h2 {
+  @extend h1;
+}
+
+p {
+  @include clamp-content;
+  font-family: $font-content;
+  font-weight: 400;
+  text-align: left;
+}

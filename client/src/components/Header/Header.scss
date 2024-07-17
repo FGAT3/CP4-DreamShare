@@ -1,0 +1,178 @@
+@import "../../scss/index.scss";
+
+// Mobile Styles
+header {
+  nav {
+    background-color: $black-color;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-top: 0.1rem solid $primary-color;
+    padding: 0.6rem 0;
+    box-shadow: 0 -0.25rem 0.5rem rgba($primary-color, 0.5);
+    z-index: 2;
+    height: $nav-mobile-height;
+
+    ul {
+      list-style: none;
+      display: flex;
+
+      li {
+        flex: 1;
+
+        &:nth-child(1) > a::before {
+          @include icon($homeIcon);
+        }
+
+        &:nth-child(2) > a::before {
+          @include icon($articleIcon, 1.5rem, 1.5rem);
+          padding-bottom: 0.2rem;
+        }
+
+        &:nth-child(3) > a::before {
+          @include icon($dreamIcon);
+        }
+
+        &:nth-child(4) > a::before {
+          @include icon($userIcon);
+        }
+
+        .nav-link {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          color: $white-color;
+          text-decoration: none;
+          font-size: $mobile-content;
+          font-family: $font-title;
+          font-weight: 600;
+
+          &.active {
+            color: $primary-color;
+
+            &::before {
+              filter: $primary-filter;
+
+              @media (prefers-reduced-motion: no-preference) {
+                transition: all 1s ease;
+              }
+            }
+          }
+
+          &::before {
+            content: "";
+            display: block;
+            margin-bottom: 0.2rem;
+
+            @include for-desktop-up {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Desktop Styles
+@include for-desktop-up {
+  header {
+    height: $header-height;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas: "home article wildygamy dream account";
+    background-color: $black-color;
+    border-bottom: 0.1rem solid $primary-color;
+    box-shadow: 0 0.25rem 0.5rem rgba($primary-color, 0.5);
+    padding: 0 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+
+    nav {
+      position: static;
+      background-color: transparent;
+      border: none;
+      box-shadow: none;
+      display: flex;
+      align-items: center;
+      justify-self: start;
+      display: contents;
+
+      ul {
+        display: contents;
+
+        li {
+          display: contents;
+
+          .nav-link {
+            margin: 0;
+            padding: 0;
+            justify-self: start;
+            align-self: center;
+            margin: 0.4rem;
+            min-width: 5rem;
+            font-size: $desktop-content;
+            &.active {
+              @media (prefers-reduced-motion: no-preference) {
+                transition: all 1s ease;
+              }
+
+              filter: $primary-filter;
+            }
+          }
+
+          .account {
+            grid-area: account;
+            justify-self: end;
+          }
+
+          .dream {
+            grid-area: dream;
+            justify-self: end;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Specific styles
+.home,
+.article {
+  margin-left: 0.7rem;
+}
+
+.article {
+  padding-top: 0.1rem;
+}
+
+.account {
+  margin-right: 1rem;
+}
+
+.nav-dreamshare {
+  display: none;
+
+  @include for-desktop-up {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    display: flex;
+    color: $white-color;
+    font-family: $font-logo;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 0 0.5rem $primary-color);
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: all 1s ease 0s;
+    }
+
+    &:hover {
+      color: $secondary-color;
+      text-shadow: -0.15rem -0.15rem 0.5rem rgba($secondary-color, 0.6);
+    }
+  }
+}
