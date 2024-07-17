@@ -17,7 +17,7 @@ class ArticleSeeder extends AbstractSeeder {
       },
       {
         title: "The Science Behind Nightmares and How to Combat Them",
-        image: "dream-2.jpg",
+        image: "dream-2.jpeg",
         content:
           "Nightmares are distressing dreams that can cause strong emotional responses, such as fear, sadness, or anxiety. They are common and can be triggered by a variety of factors, including stress, trauma, and certain medications. Understanding the science behind nightmares can help individuals manage and reduce their occurrence. Cognitive behavioral therapy (CBT) has been effective in treating chronic nightmares by helping individuals change their thought patterns and responses to dream content. Additionally, practicing good sleep hygiene, such as maintaining a regular sleep schedule and creating a calming bedtime routine, can also mitigate the frequency and intensity of nightmares.",
         user_id: 2,
@@ -45,7 +45,7 @@ class ArticleSeeder extends AbstractSeeder {
       },
       {
         title: "How to Induce Lucid Dreams: Tips and Techniques",
-        image: "dream-6.jpg",
+        image: "dream-6.jpeg",
         content:
           "Inducing lucid dreams can be a rewarding experience for those looking to explore their dream worlds with awareness. Techniques such as reality testing, where individuals frequently question their state of consciousness, and the wake back to bed (WBTB) method, which involves waking up during the night and then returning to sleep, have been shown to increase the likelihood of lucid dreaming. Keeping a dream journal can also help by enhancing dream recall and increasing awareness of dream patterns. With practice and patience, anyone can develop the skills needed to experience lucid dreams.",
         user_id: 1,

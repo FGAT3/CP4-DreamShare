@@ -1,3 +1,5 @@
+/* Mixins */
+
 @mixin for-desktop-up {
   @media (min-width: 768px) {
     @content;
@@ -20,6 +22,26 @@
   font-size: clamp(#{$mobile-content}, 2vw, #{$desktop-content});
 }
 
+@mixin transition($property, $duration, $timing-function) {
+  -webkit-transition: $property $duration $timing-function;
+  -moz-transition: $property $duration $timing-function;
+  transition: $property $duration $timing-function;
+}
+
+@mixin animation($name, $duration, $timing-function) {
+  -webkit-animation: $name $duration $timing-function;
+  -moz-animation: $name $duration $timing-function;
+  animation: $name $duration $timing-function;
+}
+
+@mixin box-shadow($shadow) {
+  box-shadow: $shadow;
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+}
+
+/* Keyframes */
+
 @keyframes bounce {
   0%,
   100% {
@@ -27,6 +49,22 @@
   }
   50% {
     transform: translateY(-20%);
+  }
+}
+
+@keyframes sh02 {
+  from {
+    opacity: 0;
+    left: 0%;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    left: 100%;
   }
 }
 

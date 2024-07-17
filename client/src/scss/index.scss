@@ -9,6 +9,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: $font-content;
   background-color: $black-color;
@@ -33,7 +37,7 @@ h1 {
   font-family: $font-title;
   text-align: center;
   color: $white-color;
-  font-weight: 500;
+  font-weight: 600;
   margin: 1rem;
   text-shadow: $font-stroke;
 
