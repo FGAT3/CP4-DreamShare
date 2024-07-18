@@ -10,7 +10,7 @@ const register = async (data) => {
     const url = "/api/users";
     const response = await sendData(url, data, "POST");
     if (response.status === 201) {
-      toast.success("Inscription réussie 👾");
+      toast.success("Registration successful !");
       return { success: true };
     }
     throw new Error("Invalid response from server");

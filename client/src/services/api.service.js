@@ -11,7 +11,7 @@ export async function fetchApi(url) {
     const jsonData = await response.json();
     return jsonData;
   } catch (error) {
-    toast.error("Erreur lors de la récupération des données :");
+    toast.error("Error getting data :");
     return null;
   }
 }
@@ -28,7 +28,7 @@ export async function sendData(url, data, http) {
     });
     return response;
   } catch (error) {
-    toast.error("Erreur lors de la récupération des données :");
+    toast.error("Error sending data :");
     return null;
   }
 }
@@ -45,4 +45,18 @@ export async function handleFormAction(request, actionFunction, redirectPath) {
   }
 
   return result;
+}
+
+export async function fetchMultipleApis(urls) {
+  const baseUrl = import.meta.env.VITE_API_URL;
+  const fullUrls = urls.map((url) => baseUrl + url);
+
+  const responses = await Promise.all(fullUrls.map((url) => fetch(url)));
+  const dataPromises = responses.map((response) => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  });
+  return Promise.all(dataPromises);
 }

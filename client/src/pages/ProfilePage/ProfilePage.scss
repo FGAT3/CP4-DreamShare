@@ -1,0 +1,19 @@
+@import "../../scss/index.scss";
+
+.profile-avatar {
+  display: block;
+  margin: auto;
+}
+
+.button-modify,
+.button-delete {
+  display: block;
+  margin: 1.5rem auto;
+}
+
+.profile-dream {
+  text-align: left;
+  &::before {
+    @include icon($addCircle);
+  }
+}

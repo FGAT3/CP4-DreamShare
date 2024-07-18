@@ -10,7 +10,7 @@ const login = async (data) => {
     const url = "/api/login";
     const response = await sendData(url, data, "POST");
     if (response.status === 200) {
-      toast.success("Connexion réussie 👾");
+      toast.success("Login successful !");
       const auth = await response.json();
       return { success: true, auth };
     }

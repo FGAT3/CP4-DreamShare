@@ -19,7 +19,7 @@ function Header({ links }) {
           ))}
           <li>
             <NavLink
-              to={auth ? `/profile/:id` : "/login"}
+              to={auth ? `/profile/${auth.id}` : "/login"}
               className="nav-link account"
             >
               Account

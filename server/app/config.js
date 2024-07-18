@@ -105,7 +105,7 @@ app.use("/api", apiRouter);
 // 2. Ensure that the `reactBuildPath` points to the correct directory where your client's build artifacts are located.
 
 const reactBuildPath = path.join(__dirname, "/../../client/dist");
-const publicFolderPath = path.join(__dirname, "/../public");
+const publicFolderPath = path.join(__dirname, "/../public/assets/images");
 
 // Serve react resources
 

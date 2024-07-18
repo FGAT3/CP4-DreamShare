@@ -22,7 +22,7 @@
   font-size: clamp(#{$mobile-content}, 2vw, #{$desktop-content});
 }
 
-@mixin transition($property, $duration, $timing-function) {
+@mixin transition($property, $duration, $timing-function: ease-in-out) {
   -webkit-transition: $property $duration $timing-function;
   -moz-transition: $property $duration $timing-function;
   transition: $property $duration $timing-function;
@@ -38,6 +38,48 @@
   box-shadow: $shadow;
   -webkit-box-shadow: $shadow;
   -moz-box-shadow: $shadow;
+}
+
+@mixin button-styles($primary-color, $nuance-color) {
+  position: relative;
+  padding: 0.6rem 1rem;
+  border-radius: 2rem;
+  border: 1px solid $primary-color;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.02rem;
+  background: transparent;
+  color: $white-color;
+  @include transition(all, 0.2s, ease-in);
+
+  &:hover {
+    background: $primary-color;
+    @include box-shadow(0 0 0.8rem 0.01rem rgba($nuance-color, 0.8));
+    @include transition(all, 0.2s, ease-out);
+
+    &::before {
+      @include animation(sh02, 0.5s, linear);
+    }
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 86%;
+    position: absolute;
+    top: 7%;
+    left: 0;
+    opacity: 0;
+    background: $white-color;
+    @include box-shadow(0 0 1rem 0.5rem $white-color);
+    transform: skewX(-20deg);
+  }
+
+  &:active {
+    @include box-shadow(0 0 0 0 transparent);
+    @include transition(box-shadow, 0.2s, ease-in);
+  }
 }
 
 /* Keyframes */
@@ -67,40 +109,3 @@
     left: 100%;
   }
 }
-
-// @mixin form-style {
-//   display: flex;
-//   flex-direction: column;
-//   margin: 1.2rem;
-//   border-radius: 0.4rem;
-//   @include for-desktop-up {
-//     margin: auto 5rem;
-//   }
-// }
-
-// @mixin form-label {
-//   font-weight: 600;
-//   margin: 0.5rem;
-//   @include for-desktop-up {
-//     margin: 0.5rem 10rem;
-//   }
-// }
-
-// @mixin form-input {
-//   margin: 0.1rem 0.4rem 2rem 0.4rem;
-//   padding: 0.8rem;
-//   border: 0.2rem outset $secondary-color;
-//   border-radius: 0.2rem;
-//   height: 1.5rem;
-//   @include for-desktop-up {
-//     margin: 0.1rem 10rem 1rem;
-//   }
-// }
-
-// @mixin form-button {
-//   margin: 3rem auto 0.5rem;
-//   border: 0.2rem outset $secondary-color;
-//   border-radius: 0.7rem;
-//   width: 10rem;
-//   height: 1.6rem;
-// }

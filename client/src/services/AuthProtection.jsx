@@ -18,8 +18,10 @@ function AuthProtection({ children }) {
 
   useEffect(() => {
     if (!token && auth?.role !== "user") {
-      toast.error('👻 Veuillez vous connecter 👻')
-      navigate("/connexion");
+      toast.error("Login to access this page", {
+        toastId: "error1",
+      });
+      navigate("/login");
     }
   }, [auth, navigate]);
 

@@ -5,7 +5,7 @@ export const headerLinks = [
 ];
 
 export const footerLinks = [
-  { to: "/contact#form", label: "Contact us" },
+  { to: "/contact#contact-us", label: "Contact us" },
   { to: "/contact#find-us", label: "Find us" },
-  { to: "/infos", label: "About us" },
+  { to: "/about-us", label: "About us" },
 ];

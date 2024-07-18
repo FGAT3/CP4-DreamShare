@@ -1,47 +1,5 @@
 @import "../../scss/index.scss";
 
-@mixin button-styles($primary-color, $nuance-color) {
-  position: relative;
-  padding: 0.6rem 1rem;
-  border-radius: 0.4rem;
-  border: 1px solid $primary-color;
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.02rem;
-  background: transparent;
-  color: $white-color;
-  @include transition(all, 0.2s, ease-in);
-
-  &:hover {
-    background: $primary-color;
-    @include box-shadow(0 0 0.8rem 0.01rem rgba($nuance-color, 0.8));
-    @include transition(all, 0.2s, ease-out);
-
-    &::before {
-      @include animation(sh02, 0.5s, linear);
-    }
-  }
-
-  &::before {
-    content: "";
-    display: block;
-    width: 0;
-    height: 86%;
-    position: absolute;
-    top: 7%;
-    left: 0;
-    opacity: 0;
-    background: $white-color;
-    @include box-shadow(0 0 1rem 0.5rem $white-color);
-    transform: skewX(-20deg);
-  }
-
-  &:active {
-    @include box-shadow(0 0 0 0 transparent);
-    @include transition(box-shadow, 0.2s, ease-in);
-  }
-}
-
 .button-primary {
   @include button-styles($primary-color, $nuance-primary-color);
 }
@@ -52,4 +10,13 @@
 
 .button-red {
   @include button-styles($red-color, $nuance-red-color);
+}
+
+.button-orange {
+  @include button-styles($orange-color, $nuance-orange-color);
+}
+
+.button {
+  text-decoration: none;
+  @include button-styles($primary-color, $nuance-primary-color);
 }
