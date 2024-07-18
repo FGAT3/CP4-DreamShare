@@ -15,7 +15,7 @@ function RegistrationPage() {
 
   return (
     <main>
-      <h1 className="registration-title">Inscription</h1>
+      <h1 className="registration-title">Registration</h1>
       <Form method="post" className="registration-form">
         {inputFields.map((field) => (
           <>

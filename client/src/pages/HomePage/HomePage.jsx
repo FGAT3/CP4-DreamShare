@@ -1,4 +1,5 @@
 import { useContext, useEffect } from "react";
+// import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import decodeToken from "../../services/decodeToken";
 import NavigationChevron from "../../components/NavigationChevron/NavigationChevron";
@@ -7,6 +8,10 @@ import "./HomePage.scss";
 
 function HomePage() {
   const { setAuth } = useContext(AuthContext);
+
+  // const [dreamData, articleData] = useLoaderData();
+
+  // console.log(dreamData, articleData);
 
   useEffect(() => {
     const token = localStorage.getItem("token");

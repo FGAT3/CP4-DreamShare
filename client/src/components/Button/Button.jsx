@@ -3,7 +3,11 @@ import "./Button.scss";
 
 export default function Button({ text, color, className, onClick }) {
   return (
-    <button type="submit" className={`button-${color} ${className}`} onClick={onClick}>
+    <button
+      type="submit"
+      className={`button-${color} ${className}`}
+      onClick={onClick}
+    >
       {text}
     </button>
   );
@@ -19,5 +23,5 @@ Button.propTypes = {
 Button.defaultProps = {
   color: "primary",
   className: null,
-  onClick: null,
+  onClick: undefined,
 };

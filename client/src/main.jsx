@@ -19,16 +19,17 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 
-import { fetchApi, handleFormAction, sendData } from "./services/api.service";
+import {
+  fetchApi,
+  // fetchMultipleApis,
+  handleFormAction,
+  sendData,
+} from "./services/api.service";
 import login from "./services/login.service";
 import register from "./services/register.service";
-// import favoriteGame from "./services/favoriteGame.service";
-// import sendEmail from "./services/contact.service";
-// import sendScore from "./services/score.service";
 import AuthProtection from "./services/AuthProtection";
 import ContactPage from "./pages/ContactPage/ContactPage";
 import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
-// import decodeToken from "./services/decodeToken";
 
 const baseUrlArticle = "/api/articles";
 const baseUrlDream = "/api/dreams";
@@ -39,7 +40,11 @@ const router = createBrowserRouter([
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
-      { path: "/", element: <HomePage /> },
+      {
+        path: "/",
+        element: <HomePage />,
+        // loader: () => fetchMultipleApis(`${baseUrlDream}, ${baseUrlArticle}}`),
+      },
       {
         path: "/article",
         element: <ArticlePage />,

@@ -17,9 +17,7 @@ function NavigationChevron({ route, isUp }) {
   };
 
   const chevronSrc = isUp ? chevronUp : chevronDown;
-  const buttonRole = isUp
-    ? "Remonter en haut de la page"
-    : "Descendre vers la section suivante";
+  const buttonRole = isUp ? "Go to top of page" : "Scroll down to next section";
 
   return (
     <ChevronButton
