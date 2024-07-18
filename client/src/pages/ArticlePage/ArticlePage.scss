@@ -1,0 +1,8 @@
+@import "../../scss/index.scss";
+
+.article-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+}

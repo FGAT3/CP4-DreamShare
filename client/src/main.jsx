@@ -21,7 +21,7 @@ import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 
 import {
   fetchApi,
-  // fetchMultipleApis,
+  fetchMultipleApis,
   handleFormAction,
   sendData,
 } from "./services/api.service";
@@ -43,7 +43,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePage />,
-        // loader: () => fetchMultipleApis(`${baseUrlDream}, ${baseUrlArticle}}`),
+        loader: () => fetchMultipleApis([baseUrlDream, baseUrlArticle]),
       },
       {
         path: "/article",

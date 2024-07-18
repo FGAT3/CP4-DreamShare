@@ -1,18 +1,32 @@
+import PropTypes from 'prop-types';
 import Button from "../Button/Button";
 import "./CardDream.scss";
 
-export default function CardDream() {
+const BASE_URL = import.meta.env.VITE_API_URL;
+
+export default function CardDream({dream}) {
   return (
     <article className="card-dream">
-      <p>John Uno posted 3 days ago</p>
-      <h3>The Starlit Voyage 🌟</h3>
+      <img src={`${BASE_URL}/avatar/${dream.avatar_image}`} alt="" />
+      <p>{dream.firstname} {dream.lastname} posted {dream.formatted_date}</p>
+      <h3>{dream.title}</h3>
       <p>
-        I found myself aboard a wooden ship, sailing through the night sky. The
-        stars were my compass, and each constellation whispered secrets about
-        distant lands. As we glided past Orion, I felt a sense of wonder and
-        adventure...
+        {dream.content}
       </p>
       <Button text="See more" />
     </article>
   );
 }
+
+CardDream.propTypes = {
+  dream: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    formatted_date: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+    user_id: PropTypes.number.isRequired,
+    firstname: PropTypes.string.isRequired,
+    lastname: PropTypes.string.isRequired,
+    avatar_image: PropTypes.string.isRequired,
+  }).isRequired,
+};

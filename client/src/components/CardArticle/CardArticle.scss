@@ -1,1 +1,66 @@
 @import "../../scss/index.scss";
+
+.card-article {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: transparent;
+  border: 1px solid $secondary-color;
+  width: 15rem;
+  max-height: 27rem;
+  margin: 1rem auto;
+  @media (prefers-reduced-motion: no-preference) {
+    transition: transform 0.3s ease;
+  }
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  @include for-desktop-up {
+    margin: 2rem;
+  }
+
+  p:first-of-type {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 0.8rem;
+  }
+
+  img {
+    border-bottom: 1px solid $secondary-color;
+    max-height: 12rem;
+  }
+
+  p:nth-of-type(2),
+  h3 {
+    max-width: 18rem;
+  }
+
+  h3 {
+    text-align: center;
+    padding: 0.4rem;
+    position: relative;
+
+    &:after {
+      content: "";
+      display: block;
+      width: 75%;
+      height: 0.5px;
+      background-color: $secondary-color;
+      position: absolute;
+      bottom: 0;
+      left: 15%;
+    }
+  }
+
+  p:nth-of-type(2) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0.3rem;
+  }
+
+  button {
+    margin: 0 auto;
+  }
+}

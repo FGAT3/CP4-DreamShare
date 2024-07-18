@@ -50,11 +50,17 @@ h2 {
   @extend h1;
 }
 
+h3 {
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+
 p {
   @include clamp-content;
   font-family: $font-content;
   font-weight: 400;
   text-align: left;
+  font-size: 1rem;
 }
 
 form {

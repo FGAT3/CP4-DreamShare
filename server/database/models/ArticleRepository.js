@@ -14,7 +14,20 @@ class ArticleRepository extends AbstractRepository {
   }
 
   async readAll() {
-    const [rows] = await this.database.query(`SELECT * FROM ${this.table}`);
+    const [rows] = await this.database.query(`
+      SELECT 
+        article.id,
+        DATE_FORMAT(article.created_at, '%d-%m-%Y') AS formatted_date,
+        article.title,
+        article.image,
+        article.content,
+        article.user_id,
+        user.firstname,
+        user.lastname,
+        user.avatar_image
+      FROM article
+      JOIN user ON article.user_id = user.id
+    `);
     return rows;
   }
 }

@@ -34,6 +34,11 @@
   animation: $name $duration $timing-function;
 }
 
+@mixin custom-border($border-color) {
+  border: 0.25rem solid $border-color;
+  box-shadow: 0 0 0.8rem 0.01rem $border-color;
+}
+
 @mixin box-shadow($shadow) {
   box-shadow: $shadow;
   -webkit-box-shadow: $shadow;
@@ -50,6 +55,8 @@
   letter-spacing: 0.02rem;
   background: transparent;
   color: $white-color;
+  cursor: pointer;
+  width: fit-content;
   @include transition(all, 0.2s, ease-in);
 
   &:hover {
