@@ -1,0 +1,24 @@
+@import "../../scss/index.scss";
+
+.modalDelete {
+  position: fixed;
+  top: 5rem;
+  left: 0;
+  width: 40rem;
+  height: 80vh;
+  margin: auto;
+  background-color: rgba($black-color, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    color: $white-color;
+    min-height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3rem;
+  }
+}
